@@ -4,40 +4,42 @@
 		<pages>
 			<Page xmlns="sap.m" title="My Page">
 				<content>
-					<Text text="create" id="__text0" width="20%"/>
-					<Text xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" text="o" id="__text0_copy" width="20%"/>
-					<ToolbarSpacer/>
-					<Text text="change" id="__text1" width="20%"/>
-					<Text xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" text="o" id="__text1_copy" width="20%"/>
-					<Text xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" text="refrence number" id="__text0_copy2"
-						width="10%"/>
-					<TextArea id="__area0" rows="1" cols="0" height="0px"/>
-					<ToolbarSpacer/>
-					<Text text="display" id="__text3" width="20%"/>
-					<Text xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" text="o" id="__text3_copy" width="20%"/>
-					<ToolbarSpacer/>
-					<Text text="confirm" id="__text4" width="20%" class="first-line"/>
-					<Text xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" text="o" id="__text4_copy" width="20%"/>
-					<ToolbarSpacer/>
-					<Text text=" shift" id="__text5" width="3%" class="second-line"/>
-					<TextArea id="__area1" rows="1" cols="0" height="0" class="margin-right-10"/>
-					<Text xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" text="Date" id="__text5_copy" width="3%"/>
-					<TextArea id="__area2" rows="1" cols="0" height="0" class="margin-right-11"/>
-					<Text text="statues o/p" id="__text6" width="15%" class="new-line1"/>
-					<ToolbarSpacer/>
+					<FlexBox justifyContent="SpaceAround" wrap="Wrap" class="moven">
+						<RadioButtonGroup width="100%" columns="1" selectedIndex="-1" id="__group0">
+							<buttons>
+								<RadioButton groupName="__group0" text="Create" id="__button0"/>
+								<RadioButton groupName="__group0" text="Change" id="__button1"/>
+								<RadioButton groupName="__group0" text="Display" id="__button2"/>
+								<RadioButton groupName="__group0" text="Confirm" id="__button3"/>
+							</buttons>
+							<layoutData>
+								<l:GridData span="L6 M6 S12"/>
+							</layoutData>
+						</RadioButtonGroup>
+						<FlexBox alignItems="Center" direction="Row" justifyContent="Center">
+							<Label class="margin_right" labelFor="refNo" text="Reference Number"/>
+							<Input id="refNo" width="100%"/>
+							 <Button text="Display" press="onDisplayPress"/>
+							  <Button text="Change" press="onChangePress"/>
+							<layoutData>
+								<l:GridData span="L6 M6 S12"/>
+							</layoutData>
+						</FlexBox>
+						<items/>
+					</FlexBox>
 					<FlexBox class="container" wrap="Wrap">
 						<l:Grid>
 							<l:content>
 								<FlexBox alignItems="Center" direction="Row" class="left-align">
 									<Label class="margin_right1" labelFor="awl1" text="المبيعات (X2) "/>
-									<Input id="awl1"/>
+									<Input id="awl1" value="{GSHeaderSet>/ZX2GluFru}" change="onAwl1Change"/>
 									<layoutData>
 										<l:GridData span="L4 M4 S12"/>
 									</layoutData>
 								</FlexBox>
 								<FlexBox alignItems="Center" direction="Row" class="left-align8">
 									<Label class="margin_right" labelFor="akher1" text="إرتجاعات المبيعات (X4) "/>
-									<Input id="akher1"/>
+									<Input id="akher1"  value="{GSHeaderSet>/ZX4GluFru}"  />
 									<layoutData>
 										<l:GridData span="L4 M4 S12"/>
 									</layoutData>
@@ -51,14 +53,14 @@
 								</FlexBox>
 								<FlexBox alignItems="Center" direction="Row" class="left-align10">
 									<Label class="margin_right" labelFor="awl2" text="قياس تانك 1"/>
-									<Input id="awl2"/>
+									<Input id="awl2"  value="{path: '/ZX2GluFru'}"/>
 									<layoutData>
 										<l:GridData span="L4 M4 S12"/>
 									</layoutData>
 								</FlexBox>
 								<FlexBox alignItems="Center" direction="Row" class="left-align7">
 									<Label class="margin_right" labelFor="akher2" text="قياس تانك 2"/>
-									<Input id="akher2"/>
+									<Input id="akher2"    value="{path: '/ZX4GluFru'}"/>
 									<layoutData>
 										<l:GridData span="L4 M4 S12"/>
 									</layoutData>
@@ -129,7 +131,7 @@
 							</l:content>
 						</l:Grid>
 					</FlexBox>
-					<Table class="table" id="__table0" width="40%" >
+					<Table class="table" id="__table0" width="40%">
 						<columns>
 							<Column id="mo" hAlign="Center">
 								<Text class="title" text="المنتج" id="KP"/>
@@ -194,32 +196,28 @@
 						</items>
 					</Table>
 					<ToolbarSpacer/>
-				
-						
-							<Table  id="__table1" width="40%">
-								<items>
-									<ColumnListItem id="__item7">
-										<cells>
-											<Input/>
-											<Input/>
-										</cells>
-									</ColumnListItem>
-								</items>
-								<columns>
-									<Column id="__column0"     hAlign="Center">
-										<header>
-											<Label text=" اجمالي رصيد اول (30 تانك)" id="__label14"/>
-										</header>
-									</Column>
-									<Column id="__column1"       hAlign="Center">
-										<header>
-											<Label text=" اجمالي رصيد اول (30 تانك)" id="__label15"/>
-										</header>
-									</Column>
-								</columns>
-							</Table>
-					
-				
+					<Table id="__table1" width="40%">
+						<items>
+							<ColumnListItem id="__item7">
+								<cells>
+									<Input/>
+									<Input/>
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column id="__column0" hAlign="Center">
+								<header>
+									<Label text=" اجمالي رصيد اول (30 تانك)" id="__label14"/>
+								</header>
+							</Column>
+							<Column id="__column1" hAlign="Center">
+								<header>
+									<Label text=" اجمالي رصيد اول (30 تانك)" id="__label15"/>
+								</header>
+							</Column>
+						</columns>
+					</Table>
 				</content>
 			</Page>
 		</pages>
